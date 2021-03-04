@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
+});
+
+Route::get('post/add', function(){
+   DB::table('post')->insert([
+     'title' => 'Lab-4',
+     'body' => 'HTML'
+   ]);
+});
+
+Route::get('post', function(){
+    $post = Post::find(1);
+    return $post->title;
 });
