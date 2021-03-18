@@ -26,6 +26,7 @@ Route::get('post/add', function(){
      'body' => 'HTML'
    ]);
 });
+
 ////////////Lab-5/////////////////////////////////////////////
 Route::get('post', [BlogController::class, 'index']);
 
@@ -33,4 +34,7 @@ Route::get('post/create', function() {
   return view('blog.create');
 });
 
-Route::post('port/create', [BlogController::class, 'store'])->name('add-post');
+Route::post('post/create', [BlogController::class, 'store'])->name('add-post');
+
+//////////////Lab-6////////////////////////////////////////////
+Route::get('post/{id}', [BlogController::class, 'get_post']);
